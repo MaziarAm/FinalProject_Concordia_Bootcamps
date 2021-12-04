@@ -1,0 +1,317 @@
+[
+  {
+    "_id": 1,
+    "className": "Learn English by watching these movies! ",
+    "price": 19.99,
+    "category": "english",
+    "duration": 60,
+    "level": "beginner",
+    "imageSrc": "http://myaccent.org/wp-content/uploads/2018/01/Learning-through-English-movies.jpg",
+    "availability": 10,
+
+    "reviews": [
+      {
+        "text": "Highly recommended!",
+        "stars": 5
+      },
+      {
+        "text": "Needs to be more punctual.",
+        "stars": 2.5
+      }
+    ]
+  },
+  {
+    "_id": 2,
+    "className": "English for career development",
+    "price": 39.99,
+    "category": "english",
+    "duration": 90,
+    "level": "advanced",
+    "imageSrc": "https://www.youthaffairs.org/wp-content/uploads/2020/07/2020-07-13-14_16_43-english-career-development-Google-Search.jpg",
+    "availability": 5,
+
+    "reviews": [
+      {
+        "text": "Highly recommended!",
+        "stars": 5
+      },
+      {
+        "text": "Expected more from it",
+        "stars": 3
+      }
+    ]
+  },
+  {
+    "_id": 3,
+    "className": "Basic English vocabulary",
+    "price": 9.99,
+    "category": "english",
+    "duration": 30,
+    "level": "beginner",
+    "imageSrc": "https://freecoursesites.com/wp-content/uploads/2019/04/Absolutely-Essential-Words-Best-English-Vocabulary-Course.jpg",
+    "availability": 30,
+
+    "reviews": [
+      {
+        "text": "Great course!",
+        "stars": 4
+      },
+      {
+        "text": "Totally helped my English vocabulary",
+        "stars": 4
+      }
+    ]
+  },
+  {
+    "_id": 4,
+    "className": "IELTS preparation",
+    "price": 59.99,
+    "category": "english",
+    "duration": 90,
+    "level": "beginner",
+    "imageSrc": "https://leverageedu.com/blog/wp-content/uploads/2020/04/Types-of-IELTS-exam.png",
+    "availability": 5,
+
+    "reviews": [
+      {
+        "text": "A must-have for everyone taking the IELTS exam",
+        "stars": 5
+      },
+      {
+        "text": "Intense but rewarding",
+        "stars": 4
+      }
+    ]
+  },
+  {
+    "_id": 5,
+    "className": "Day to day conversation in english",
+    "price": 49.99,
+    "category": "english",
+    "duration": 45,
+    "level": "intermediate",
+    "imageSrc": "https://www.menapeacademy.com/uploadImages/ProductImages/Product-P-82-637536385543550886.jpg",
+    "availability": 0,
+
+    "reviews": [
+      {
+        "text": "Can't recommend enough!",
+        "stars": 4
+      },
+      {
+        "text": "Good overall, but not worth the price",
+        "stars": 3
+      }
+    ]
+  },
+  {
+    "_id": 6,
+    "className": "Easy French",
+    "price": 19.99,
+    "category": "french",
+    "duration": 60,
+    "imageSrc": "https://images-na.ssl-images-amazon.com/images/I/711VW9sDoKL.jpg",
+    "level": "beginner",
+    "availability": 10,
+
+    "reviews": [
+      {
+        "text": "Learned a lot from this course!",
+        "stars": 4
+      },
+      {
+        "text": "You can definitely find better courses elsewhere",
+        "stars": 1
+      }
+    ]
+  },
+  {
+    "_id": 7,
+    "className": "Advanced French Grammar",
+    "price": 34.99,
+    "category": "french",
+    "duration": 60,
+    "level": "advanced",
+    "imageSrc": "https://process.filepicker.io/APHE465sSbqvbOIStdwTyz/rotate=deg:exif/resize=fit:crop,height:566,width:944/output=quality:80,compress:true,strip:true,format:jpg/cache=expiry:max/https://cdn.filestackcontent.com/NWZppqjWRCKqcrnk3nOY",
+    "availability": 10,
+
+    "reviews": [
+      {
+        "text": "Amazing course!",
+        "stars": 5
+      },
+      {
+        "text": "Covers all the grammar",
+        "stars": 4
+      }
+    ]
+  },
+  {
+    "_id": 8,
+    "className": "Learn french by exploring Paris!",
+    "price": 29.99,
+    "category": "french",
+    "duration": 45,
+    "imageSrc": "https://i.ytimg.com/vi/M3wsQuGLnsw/maxresdefault.jpg",
+    "level": "intermediate",
+    "availability": 15,
+
+    "reviews": [
+      {
+        "text": "The best method to learn a new language!",
+        "stars": 5
+      },
+      {
+        "text": "I wish it had more conversations",
+        "stars": 3.5
+      }
+    ]
+  },
+  {
+    "_id": 9,
+    "className": "TEF preparation",
+    "price": 59.99,
+    "category": "french",
+    "duration": 90,
+    "level": "advanced",
+    "imageSrc": "https://exam-france.com/wp-content/uploads/2020/12/tef.png",
+    "availability": 2,
+
+    "reviews": [
+      {
+        "text": "I got a very good score after taking this course!",
+        "stars": 5
+      },
+      {
+        "text": "The instructor is top notch. Definitely recommended!",
+        "stars": 4.5
+      }
+    ]
+  },
+  {
+    "_id": 10,
+    "className": "French for beginners",
+    "price": 29.99,
+    "category": "french",
+    "duration": 45,
+    "level": "beginner",
+    "imageSrc": "https://www.unb.ca/cel/_assets/images/enrichment/ll-fred/ll-french-beginners.jpg",
+    "availability": 15,
+
+    "reviews": [
+      {
+        "text": "One of the best beginner friendly courses out there!",
+        "stars": 4.5
+      },
+      {
+        "text": "Great course for beginners !",
+        "stars": 4.5
+      }
+    ]
+  },
+  {
+    "_id": 11,
+    "className": "English writing A-Z",
+    "price": 39.99,
+    "category": "english",
+    "duration": 90,
+    "imageSrc": "https://gaijinpot.scdn3.secure.raxcdn.com/app/uploads/sites/4/2019/03/Reading-writing-3.jpg",
+    "level": "intermediate",
+    "availability": 7,
+
+    "reviews": [
+      {
+        "text": "My writing improved so much after taking this course!",
+        "stars": 5
+      },
+      {
+        "text": "Great course, but 90 minutes is a bit too much.",
+        "stars": 3.5
+      }
+    ]
+  },
+  {
+    "_id": 12,
+    "className": "French Reading Comprehension",
+    "price": 29.99,
+    "category": "french",
+    "duration": 90,
+    "level": "intermediate",
+    "imageSrc": "https://mmersfrenchresources.com/wp-content/uploads/2019/07/Screen-Shot-2019-07-22-at-9.24.17-PM-2-2-2-2-2-2-2-2.png",
+    "availability": 5,
+
+    "reviews": [
+      {
+        "text": "Good for improving your reading skills.",
+        "stars": 4
+      },
+      {
+        "text": "Great course",
+        "stars": 4
+      }
+    ]
+  },
+  {
+    "_id": 13,
+    "className": "Improve your Listening comprehension by music",
+    "price": 39.99,
+    "category": "english",
+    "duration": 45,
+    "level": "intermediate",
+    "imageSrc": "https://www.lingholic.com/wp-content/uploads/2014/04/learn-a-language.jpg",
+    "availability": 13,
+
+    "reviews": [
+      {
+        "text": "Best course ever!",
+        "stars": 5
+      },
+      {
+        "text": "This is by far the best way to improve your listening skills!",
+        "stars": 5
+      }
+    ]
+  },
+  {
+    "_id": 14,
+    "className": "Improve your speaking skills",
+    "price": 29.99,
+    "category": "both",
+    "duration": 60,
+    "level": "intermediate",
+    "imageSrc": "https://www.humorthatworks.com/wp-content/uploads/2009/11/improve-your-public-speaking.jpg",
+    "availability": 13,
+
+    "reviews": [
+      {
+        "text": "I can speak with more confidence thanks to this course!",
+        "stars": 4.5
+      },
+      {
+        "text": "Great course for both English and French learners",
+        "stars": 4.5
+      }
+    ]
+  },
+  {
+    "_id": 15,
+    "className": "Bilingual : Learn English and French fast!",
+    "price": 79.99,
+    "category": "both",
+    "duration": 90,
+    "level": "intermediate",
+    "imageSrc": "https://ih1.redbubble.net/image.883776734.8878/pp,840x830-pad,1000x1000,f8f8f8.jpg",
+    "availability": 3,
+
+    "reviews": [
+      {
+        "text": "Expensive but well worth the price!",
+        "stars": 5
+      },
+      {
+        "text": "Outstanding. One of the most unique courses out there!",
+        "stars": 5
+      }
+    ]
+  }
+]
