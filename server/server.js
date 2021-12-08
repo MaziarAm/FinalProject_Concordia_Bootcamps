@@ -1,11 +1,19 @@
 "use strict";
+const {
+  getAllClasses,
+  getClassesById,
+  getAllOrders,
+  deleteOrderById,
+  getOrdersByEmail,
+  createOrder,
+  getUserByEmail,
+  postUser,
+  addReview,
+} = require("./handlers");
 
 const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
-// const companiesRouter = require("./routes/companies/companies");
-// const itemsRouter = require("./routes/items/items");
-// const userRouter = require("./routes/users/users");
 const PORT = 4000;
 require("dotenv").config();
 
@@ -28,9 +36,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/", express.static(__dirname + "/"));
 
 // REST endpoints
-// app.use(companiesRouter);
-// app.use(itemsRouter);
-// app.use(userRouter);
+app.get("/classes", getAllClasses);
+app.get("/classes/:_id", getClassesById);
+app.get("/users/email/:email", getUserByEmail);
+app.post("/users/email", postUser);
+app.patch("/classes/:course", addReview);
+app.get("/orders", getAllOrders);
+app.delete("/orders/:_id", deleteOrderById);
+app.get("/orders/:email", getOrdersByEmail);
+app.post("/orders", createOrder);
 
 // this is our catch all endpoint.
 app.get("*", (req, res) => {
