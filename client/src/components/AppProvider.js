@@ -8,7 +8,6 @@ const AppProvider = ({ children }) => {
   const [userType, setUserType] = useState(null);
   const [course, setCourse] = useState(null);
   const { user, isAuthenticated } = useAuth0();
-  const [filter, setFilter] = useState("en");
 
   // console.log(user);
   useEffect(() => {
@@ -60,15 +59,30 @@ const AppProvider = ({ children }) => {
   }, [isAuthenticated]);
 
   const filterClasses = (key, value) => {
-    let filteredClasses = classes.filter((course) => {
-      return course[key] === value;
-    });
-    setClasses(filteredClasses);
+    fetch("/classes")
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        // console.log(data);
+        // setClasses(data.data);
+        let filteredClasses = data.data.filter((course) => {
+          return course[key] === value;
+        });
+        setClasses(filteredClasses);
+      });
   };
 
   return (
     <AppContext.Provider
-      value={{ classes, userType, course, setCourse, filterClasses }}
+      value={{
+        classes,
+        userType,
+        course,
+        setCourse,
+        setClasses,
+        filterClasses,
+      }}
     >
       {children}
     </AppContext.Provider>

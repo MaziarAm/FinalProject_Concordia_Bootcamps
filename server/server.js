@@ -3,12 +3,14 @@ const {
   getAllClasses,
   getClassesById,
   getAllOrders,
-  deleteOrderById,
+  // deleteOrderById,
   getOrdersByEmail,
   createOrder,
   getUserByEmail,
   postUser,
   addReview,
+  updateCourseById,
+  // deleteClassById,
 } = require("./handlers");
 
 const express = require("express");
@@ -41,8 +43,10 @@ app.get("/classes/:_id", getClassesById);
 app.get("/users/email/:email", getUserByEmail);
 app.post("/users/email", postUser);
 app.patch("/classes/:course", addReview);
+app.patch("/classes/:_id", updateCourseById);
 app.get("/orders", getAllOrders);
-app.delete("/orders/:_id", deleteOrderById);
+// app.delete("/orders/:_id", deleteOrderById);
+// app.delete("/classes/:_id", deleteClassById);
 app.get("/orders/:email", getOrdersByEmail);
 app.post("/orders", createOrder);
 

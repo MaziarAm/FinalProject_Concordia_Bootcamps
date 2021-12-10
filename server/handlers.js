@@ -88,22 +88,39 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-const deleteOrderById = async (req, res) => {
-  try {
-    const client = new MongoClient(MONGO_URI, options);
-    const _id = req.body.email;
-    await client.connect();
-    const db = client.db("");
-    await db.collection("classReservations").deleteOne({ email: _id });
-    res.status(200).json({
-      status: 200,
-      message: "order deleted",
-    });
-    client.close();
-  } catch (e) {
-    console.log(e);
-  }
-};
+// const deleteOrderById = async (req, res) => {
+//   try {
+//     const client = new MongoClient(MONGO_URI, options);
+//     const _id = req.body.email;
+//     await client.connect();
+//     const db = client.db("");
+//     await db.collection("classReservations").deleteOne({ email: _id });
+//     res.status(200).json({
+//       status: 200,
+//       message: "order deleted",
+//     });
+//     client.close();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
+
+// const deleteClassById = async (req, res) => {
+//   try {
+//     const client = new MongoClient(MONGO_URI, options);
+//     const { _id } = req.body._id;
+//     await client.connect();
+//     const db = client.db("");
+//     await db.collection("classes").deleteOne(_id);
+//     res.status(200).json({
+//       status: 200,
+//       message: "classes deleted",
+//     });
+//     client.close();
+//   } catch (e) {
+//     console.log(e);
+//   }
+// };
 
 const getOrdersByEmail = async (req, res) => {
   try {
@@ -201,14 +218,33 @@ const addReview = async (req, res) => {
   }
 };
 
+const updateCourseById = async (req, res) => {
+  try {
+    const { course } = req.params;
+    console.log(course);
+    const client = new MongoClient(MONGO_URI, options);
+    await client.connect();
+    console.log(req.body);
+    const db = client.db("final-project");
+    const updateCourse = await db
+      .collection("classes")
+      .updateOne({ _id: Number(course) }, { $set: { ...req.body } });
+    res.status(200).json({ status: 200, message: "Course updated" });
+    client.close();
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 module.exports = {
   getAllClasses,
   getClassesById,
   getAllOrders,
-  deleteOrderById,
   getOrdersByEmail,
   createOrder,
   getUserByEmail,
   postUser,
   addReview,
+  updateCourseById,
+  // deleteClassById,
 };

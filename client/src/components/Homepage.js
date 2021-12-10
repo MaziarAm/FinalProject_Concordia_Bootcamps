@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { AppContext } from "./AppProvider";
 import { Link } from "react-router-dom";
+import SortDropdown from "./SortDropdown";
 
 const HomePage = () => {
   const { classes, filterClasses } = useContext(AppContext);
@@ -30,6 +31,7 @@ const HomePage = () => {
         >
           English and French
         </button>
+        <SortDropdown />
         <UL>
           {classes &&
             classes.map((course) => {
@@ -42,7 +44,7 @@ const HomePage = () => {
                   <p> Language: {course.category} </p>
                   <p>Class duration: {course.duration} minutes </p>
                   <p>Level: {course.level} </p>
-                  <Image src={course.imageSrc} alt="class pic" />
+                  <Image src={course.imageSrc} alt="class image" />
                   <p> Availablity: {course.availability} </p>
                 </div>
               );

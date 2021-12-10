@@ -9,6 +9,7 @@ ReactDOM.render(
     domain="dev-1lgpnsg2.us.auth0.com"
     clientId="h9bdye8NeOZtBM8Atdgx4wUZVEsnC9tk"
     redirectUri={window.location.origin}
+    cacheLocation="localstorage"
   >
     <AppProvider>
       <App />
