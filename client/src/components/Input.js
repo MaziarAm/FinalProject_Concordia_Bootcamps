@@ -7,13 +7,7 @@ const Input = ({
   name,
   type,
   required,
-  changeHandler,
-  min,
-  max,
-  steps,
-  inputmode,
-  pattern,
-  maxlength,
+  handleFormDataChange,
   placeholder,
   defaultValue,
 }) => {
@@ -25,13 +19,7 @@ const Input = ({
         name={name}
         placeholder={placeholder ? placeholder : name}
         required={required}
-        onChange={changeHandler}
-        min={min}
-        max={max}
-        steps={steps}
-        inputmode={inputmode}
-        pattern={pattern}
-        maxlength={maxlength}
+        onChange={handleFormDataChange}
         defaultValue={defaultValue}
       />
       <label className="label" htmlFor={name}>

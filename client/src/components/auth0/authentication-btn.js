@@ -37,10 +37,14 @@ const AuthenticationButton = () => {
     <StyledDiv>
       <>
         <div>
-          <p>Hello, {user.firstname}</p>
-          <p className="role">{userType === "admin" ? "Admin" : ""}</p>
+          <p></p>
+          <p style={{ color: "white" }}>
+            {userType === "admin"
+              ? `${"Hello Admin"}`
+              : `${"Hello "}${user.given_name}`}
+          </p>
         </div>
-        <button className="profile-button" onClick={showProfileMenu}></button>
+        <button onClick={showProfileMenu}></button>
         {isProfileMenuVisible && (
           <div className="profile-menu">
             {userType === "user" ? (

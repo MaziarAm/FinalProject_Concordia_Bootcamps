@@ -8,6 +8,8 @@ const AppProvider = ({ children }) => {
   const [userType, setUserType] = useState(null);
   const [course, setCourse] = useState(null);
   const { user, isAuthenticated } = useAuth0();
+  const [update, setUpdate] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
 
   // console.log(user);
   useEffect(() => {
@@ -19,7 +21,7 @@ const AppProvider = ({ children }) => {
         // console.log(data);
         setClasses(data.data);
       });
-  }, []);
+  }, [update]);
 
   useEffect(() => {
     isAuthenticated &&
@@ -31,6 +33,7 @@ const AppProvider = ({ children }) => {
           // console.log(data);
           if (data.status === 200) {
             setUserType(data.data.type);
+            setCurrentUser(data.data);
             return null;
           } else {
             // console.log("test");
@@ -82,6 +85,10 @@ const AppProvider = ({ children }) => {
         setCourse,
         setClasses,
         filterClasses,
+        update,
+        setUpdate,
+        currentUser,
+        setCurrentUser,
       }}
     >
       {children}

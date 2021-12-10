@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import styled from "styled-components";
 import { themeVars } from "./GlobalStyles";
 import EditClass from "./EditClass";
-import { AppContext } from "./AppProvider";
 
-const ClassCard = ({ course }) => {
-  const { classes, setClasses } = useContext(AppContext);
+const ClassCard = ({ course, update, setUpdate }) => {
   const [editMode, setEditMode] = useState(false);
   const [refresh, setRefresh] = useState(0);
 
   const deleteHandler = (event) => {
-    const _id = event.target.value;
-    fetch(`/classes/$${_id}`, {
+    const _id = course._id;
+    console.log(course);
+    console.log(_id);
+    fetch(`/classes/${_id}`, {
       method: "DELETE",
     })
       .then((res) => {
@@ -20,15 +20,21 @@ const ClassCard = ({ course }) => {
       .then((data) => {
         if (data.status === 200) {
           setRefresh((refresh) => refresh + 1);
+          setUpdate(!update);
         }
       });
   };
 
   return (
-    <>
+    <CardWrapper>
       {" "}
       {editMode ? (
-        <EditClass />
+        <EditClass
+          update={update}
+          setUpdate={setUpdate}
+          setEditMode={setEditMode}
+          course={course}
+        />
       ) : (
         <Div className="class-Info">
           <h3>Class Info</h3>
@@ -44,15 +50,22 @@ const ClassCard = ({ course }) => {
           <p>{course.level}</p>
         </Div>
       )}
-      <button onClick={deleteHandler}>Delete</button>
       <button className="edit-button" onClick={() => setEditMode(!editMode)}>
         Edit
       </button>
-    </>
+      <button onClick={deleteHandler}>Delete</button>
+    </CardWrapper>
   );
 };
 
 export default ClassCard;
+
+const CardWrapper = styled.article`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 32px;
+`;
 
 const Div = styled.div`
   background: white;

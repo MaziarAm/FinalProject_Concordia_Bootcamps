@@ -21,42 +21,46 @@ const Admin = () => {
       });
   }, [update]);
 
-  // const handleChange = (event) => {};
-
   return (
-    <Div>
+    <Wrapper>
       <h2>Admin Page</h2>
-      <Div>
+      <CardSection>
         <h2>All Classes</h2>
-        <>
+        <CardContainer>
           {classes &&
             classes.map((course) => {
-              return <ClassCard course={course} />;
+              return (
+                <ClassCard
+                  update={update}
+                  setUpdate={setUpdate}
+                  course={course}
+                />
+              );
             })}
-        </>
-      </Div>
-      <Div>
-        {/* <h2>Edit Classes</h2> */}
-        {/* <Select onChange={handleChange}>
-          <option selected disabled>
-            Select a class
-          </option>
-        </Select> */}
-      </Div>
-    </Div>
+        </CardContainer>
+      </CardSection>
+    </Wrapper>
   );
 };
 
 export default Admin;
 
-const Div = styled.div`
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+`;
+
+const CardSection = styled.section`
   background: thistle;
   padding: 2rem;
   gap: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: stretch;
+  justify-content: center;
+  /* align-items: stretch; */
+  width: 100%;
 
   h2 {
     padding: 1rem;
@@ -64,24 +68,10 @@ const Div = styled.div`
   }
 `;
 
-const Select = styled.select`
-  /* padding: 0.7rem;
-    border-radius: 0.7rem;
-    border: none;
-    background: ${themeVars.accent2Color};
-    appearance: none;
-   
-    color: white;
-    font-size:1.2em;
-    font-weight: 700;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    position: relative;
-    option {
-   
-    color: white;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    border-radius: 1rem;
-
-    
-    } */
+const CardContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 `;

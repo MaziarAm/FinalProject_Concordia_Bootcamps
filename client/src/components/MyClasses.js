@@ -1,9 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./AppProvider";
-import Form from "./Form";
-import ReactStars from "react-rating-stars-component";
-import Review from "./Review";
+import styled from "styled-components";
 
 const MyClasses = () => {
   const { classes, course, setCourse } = useContext(AppContext);
@@ -12,14 +10,7 @@ const MyClasses = () => {
   const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState(null);
   const [stars, setStars] = useState(0);
-  // console.log(user);
-
-  // const ratingChanged = (newRating) => {
-  //   console.log(newRating);
-  // };
-  // const handleFormChange = (ev) => {
-  //   setMessage(ev.target.value);
-  // };
+  console.log(user);
 
   useEffect(() => {
     isAuthenticated &&
@@ -35,54 +26,67 @@ const MyClasses = () => {
         });
   }, [isAuthenticated]);
 
-  // const submitReviewHandler = (event) => {
-  //   event.preventDefault();
-  //   fetch(`/classes/${user.course}`, {
-  //     method: "PATCH",
-  //     headers: {
-  //       Accept: "application/json",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(),
-  //   })
-  //     .then((res) => res.json())
-  //     .then((json) => {
-  //       if (json.status === 200) {
-  //         setMessage("Review Added.");
-  //       }
-  //     });
-  // };
-
   if (isLoading) {
     return <div>Loading ...</div>;
   }
 
   return (
-    <>
-      {myClasses &&
-        myClasses.map((myClass) => {
-          return <div> {myClass.className} </div>;
-        })}
-      {/* <Form submitHandler={submitReviewHandler}>
-        <ReactStars
-          count={5}
-          edit={true}
-          value={stars}
-          size={24}
-          isHalf={true}
-          activeColor="#ffd700"
-          onChange={ratingChanged}
-        />
-        <textarea onChange={handleFormChange} name="text"></textarea>
-        <button type="submit">Submit</button>
-      </Form> */}
-    </>
+    <Wrapper>
+      <CardSection>
+        <h3>Welcome {user.given_name} !</h3>
+        <h3>Here is a list of your classes </h3>
+        <CardContainer>
+          {myClasses &&
+            myClasses.map((myClass) => {
+              return (
+                <div>
+                  {" "}
+                  {myClass.className}{" "}
+                  <Image src={myClass.imageSrc} alt="class image" />{" "}
+                </div>
+              );
+            })}
+        </CardContainer>
+      </CardSection>
+    </Wrapper>
   );
 };
 
 export default MyClasses;
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+`;
 
-// <div>
-//   <h2>{user.name}</h2>
-//   <p>{user.email}</p>
-// </div>
+const CardSection = styled.section`
+  background: thistle;
+  padding: 2rem;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: stretch; */
+  width: 100%;
+
+  h2 {
+    padding: 1rem;
+    margin: 0;
+  }
+`;
+
+const CardContainer = styled.section`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+`;
+
+const Image = styled.img`
+  display: flex;
+  margin-top: 25px;
+  width: 200px;
+  height: 200px;
+`;

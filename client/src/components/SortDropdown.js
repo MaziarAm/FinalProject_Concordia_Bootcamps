@@ -64,7 +64,7 @@ export const SortDropdown = () => {
     <Div>
       <Select className="sort-dropdown" onChange={handleChangeFilter}>
         <option value="" disabled selected>
-          Sort By:
+          Sort By
         </option>
         <option value="priceHighToLow">Price - Highest to Lowest</option>
         <option value="priceLowToHigh">Price - Lowest to Highest</option>

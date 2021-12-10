@@ -23,17 +23,20 @@ export default createGlobalStyle`
   *:after {
       box-sizing: border-box;
       -webkit-font-smoothing: antialiased;
+      margin: 0;
+      padding: 0;
   }
 
   html, body, div,
   input, button, select, option,
   h1, h2, h3, h4, h5, h6, p,
   text {
+    margin:0;
       
   }
 
-  html, body {
-      max-width: 100vw;
+  html, body, #root {
+      width: 100%;
       height: 100%;
   }
 
@@ -152,6 +155,12 @@ button, .button, .primary-button, .cta-button , .big-button {
   cursor: pointer;
   &:hover {
   box-shadow: ${themeVars.boxShadowHover};
+  }
+  &:active{
+    background: #cbbfdb;
+  }
+  &:focus{
+    background: #cbbfdb;
   }
 }
 

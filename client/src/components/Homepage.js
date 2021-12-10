@@ -7,7 +7,7 @@ import SortDropdown from "./SortDropdown";
 const HomePage = () => {
   const { classes, filterClasses } = useContext(AppContext);
   return (
-    <Div>
+    <Wrapper>
       <Section>
         <h2>Classes</h2>
         <button
@@ -39,31 +39,53 @@ const HomePage = () => {
                 <div key={course._id}>
                   <Link to={`/classes/${course._id}`}>
                     <p style={{ color: "black" }}>{course.className}</p>
+
+                    <p style={{ color: "black" }}> price: ${course.price} </p>
+                    <p style={{ color: "black" }}>
+                      {" "}
+                      Language: {course.category}{" "}
+                    </p>
+                    <p style={{ color: "black" }}>
+                      Class duration: {course.duration} minutes{" "}
+                    </p>
+                    <p style={{ color: "black" }}>Level: {course.level} </p>
+                    <Image src={course.imageSrc} alt="class image" />
+                    <p style={{ color: "black" }}>
+                      {" "}
+                      Availablity: {course.availability}{" "}
+                    </p>
                   </Link>
-                  <p> price: ${course.price} </p>
-                  <p> Language: {course.category} </p>
-                  <p>Class duration: {course.duration} minutes </p>
-                  <p>Level: {course.level} </p>
-                  <Image src={course.imageSrc} alt="class image" />
-                  <p> Availablity: {course.availability} </p>
                 </div>
               );
             })}
         </UL>
       </Section>
-    </Div>
+    </Wrapper>
   );
 };
 
 export default HomePage;
 
-const Div = styled.div``;
+const Wrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+`;
 
 const Section = styled.section`
+  padding: 2rem;
+  gap: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: stretch; */
+  width: 100%;
+
+  h2 {
+    padding: 1rem;
+    margin: 0;
+  }
 `;
 const Image = styled.img`
   display: flex;
@@ -73,8 +95,8 @@ const Image = styled.img`
 `;
 const UL = styled.ul`
   display: flex;
+  flex-direction: row;
   flex-wrap: wrap;
-  gap: 2rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  gap: 1rem;
+  justify-content: center;
 `;

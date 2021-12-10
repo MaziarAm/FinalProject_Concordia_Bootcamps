@@ -7,7 +7,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./AppProvider";
 
 const CheckOut = () => {
-  const { classes, course, setCourse } = useContext(AppContext);
+  const { classes, course, setCourse, update, setUpdate } =
+    useContext(AppContext);
   //   console.log(course);
   const { user, isAuthenticated } = useAuth0();
   //   console.log(user);
@@ -45,6 +46,7 @@ const CheckOut = () => {
       })
       .then((data) => {
         if (data.status === 200) {
+          setUpdate(!update);
           history.push("/confirmation");
         }
       });
@@ -70,7 +72,6 @@ const CheckOut = () => {
             required={true}
             inputmode="numeric"
             pattern="[0-9\s]{13,19}"
-            maxlength="19"
             onChange={(ev) => handleFormChange}
           />
           <Input
@@ -80,7 +81,6 @@ const CheckOut = () => {
             required={true}
             inputmode="numeric"
             pattern="[0-9\s]{4}"
-            maxlength="4"
             onChange={(ev) => handleFormChange}
           />
           <button type="submit">Submit</button>

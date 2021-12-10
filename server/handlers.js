@@ -43,7 +43,7 @@ const getClassesById = async (req, res) => {
 };
 
 const createOrder = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   try {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -53,7 +53,7 @@ const createOrder = async (req, res) => {
     const classInfo = await db
       .collection("classes")
       .findOne({ _id: req.body.course_id });
-    console.log(classInfo);
+    // console.log(classInfo);
     if (classInfo.availability <= 0) {
       return res.status(400).json({ status: 400, msg: "Class is full" });
     } else {
@@ -88,39 +88,28 @@ const getAllOrders = async (req, res) => {
   }
 };
 
-// const deleteOrderById = async (req, res) => {
-//   try {
-//     const client = new MongoClient(MONGO_URI, options);
-//     const _id = req.body.email;
-//     await client.connect();
-//     const db = client.db("");
-//     await db.collection("classReservations").deleteOne({ email: _id });
-//     res.status(200).json({
-//       status: 200,
-//       message: "order deleted",
-//     });
-//     client.close();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+const deleteClassById = async (req, res) => {
+  try {
+    const client = new MongoClient(MONGO_URI, options);
+    const { _id } = req.params;
+    console.log(req.params);
+    await client.connect();
+    const db = client.db("");
 
-// const deleteClassById = async (req, res) => {
-//   try {
-//     const client = new MongoClient(MONGO_URI, options);
-//     const { _id } = req.body._id;
-//     await client.connect();
-//     const db = client.db("");
-//     await db.collection("classes").deleteOne(_id);
-//     res.status(200).json({
-//       status: 200,
-//       message: "classes deleted",
-//     });
-//     client.close();
-//   } catch (e) {
-//     console.log(e);
-//   }
-// };
+    const result = await db
+      .collection("classes")
+      .deleteOne({ _id: Number(_id) });
+    console.log(result);
+    res.status(200).json({
+      status: 200,
+      message: "classes deleted",
+    });
+
+    client.close();
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 const getOrdersByEmail = async (req, res) => {
   try {
@@ -150,11 +139,11 @@ const getUserByEmail = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     await client.connect();
     const db = client.db("final-project");
-    console.log(req.params);
+    // console.log(req.params);
     const user = await db
       .collection("users")
       .findOne({ email: req.params.email });
-    console.log(user);
+    // console.log(user);
 
     if (user.email === req.params.email) {
       res.status(200).json({ status: 200, message: "success", data: user });
@@ -171,8 +160,8 @@ const postUser = async (req, res) => {
   try {
     const client = new MongoClient(MONGO_URI, options);
     const { fullName, email } = req.body;
-    console.log(fullName);
-    console.log(email);
+    // console.log(fullName);
+    // console.log(email);
 
     const userInfo = {
       name: fullName,
@@ -185,7 +174,7 @@ const postUser = async (req, res) => {
     const existingUser = await db
       .collection("users")
       .findOne({ email: req.body.email });
-    console.log(existingUser);
+    // console.log(existingUser);
 
     if (existingUser === null) {
       await db.collection("users").insertOne(userInfo);
@@ -202,16 +191,16 @@ const postUser = async (req, res) => {
 const addReview = async (req, res) => {
   try {
     const { course } = req.params;
-    console.log(course);
+    // console.log(course);
     const client = new MongoClient(MONGO_URI, options);
     await client.connect();
-    console.log(req.body);
+    // console.log(req.body);
     const db = client.db("final-project");
     const review = await db
       .collection("classes")
       .updateOne({ _id: Number(course) }, { $push: { reviews: req.body } });
     res.status(200).json({ status: 200, message: "Review added" });
-    console.log(review);
+    // console.log(review);
     client.close();
   } catch (e) {
     console.log(e);
@@ -220,16 +209,19 @@ const addReview = async (req, res) => {
 
 const updateCourseById = async (req, res) => {
   try {
-    const { course } = req.params;
-    console.log(course);
+    const { _id } = req.params;
+    // console.log(_id);
     const client = new MongoClient(MONGO_URI, options);
     await client.connect();
     console.log(req.body);
     const db = client.db("final-project");
     const updateCourse = await db
       .collection("classes")
-      .updateOne({ _id: Number(course) }, { $set: { ...req.body } });
-    res.status(200).json({ status: 200, message: "Course updated" });
+      .updateOne({ _id: Number(_id) }, { $set: { ...req.body } });
+    res
+      .status(200)
+      .json({ status: 200, message: "Course updated", data: updateCourse });
+    // console.log(updateCourse);
     client.close();
   } catch (e) {
     console.log(e);
@@ -246,5 +238,5 @@ module.exports = {
   postUser,
   addReview,
   updateCourseById,
-  // deleteClassById,
+  deleteClassById,
 };
