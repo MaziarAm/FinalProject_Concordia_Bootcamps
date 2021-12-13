@@ -43,7 +43,7 @@ const getClassesById = async (req, res) => {
 };
 
 const createOrder = async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   try {
     const client = new MongoClient(MONGO_URI, options);
 
@@ -63,6 +63,13 @@ const createOrder = async (req, res) => {
       // console.log(updateInventory);
       if (updateInventory.modifiedCount === 1) {
         await db.collection("classReservations").insertOne(req.body);
+
+        await db
+          .collection("users")
+          .updateOne(
+            { email: req.body.email },
+            { $push: { classes: req.body.course_id } }
+          );
         return res
           .status(200)
           .json({ status: 200, message: "Registration successful" });

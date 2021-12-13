@@ -48,6 +48,8 @@ const CheckOut = () => {
         if (data.status === 200) {
           setUpdate(!update);
           history.push("/confirmation");
+        } else if (data.status === 400) {
+          window.alert("Sorry,this class is full!");
         }
       });
   };

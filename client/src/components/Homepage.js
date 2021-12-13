@@ -12,28 +12,30 @@ const HomePage = () => {
     <Wrapper>
       <h2>Our Classes</h2>
       <Section>
-        <button
-          onClick={() => {
-            filterClasses("category", "french");
-          }}
-        >
-          French
-        </button>
-        <button
-          onClick={() => {
-            filterClasses("category", "english");
-          }}
-        >
-          English
-        </button>
-        <button
-          onClick={() => {
-            filterClasses("category", "both");
-          }}
-        >
-          English and French
-        </button>
-        <SortDropdown style={{ position: "absolute" }} />
+        <Div2>
+          <button
+            onClick={() => {
+              filterClasses("category", "french");
+            }}
+          >
+            French
+          </button>
+          <button
+            onClick={() => {
+              filterClasses("category", "english");
+            }}
+          >
+            English
+          </button>
+          <button
+            onClick={() => {
+              filterClasses("category", "both");
+            }}
+          >
+            English and French
+          </button>
+          <SortDropdown style={{ position: "absolute" }} />
+        </Div2>
         <UL>
           <Li>
             {classes ? (
@@ -80,7 +82,7 @@ const Wrapper = styled.main`
 
 const Section = styled.section`
   margin: 0 auto;
-  max-width: 800px;
+  width: 80%;
   border-radius: 1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -121,4 +123,10 @@ const Div = styled.div`
   padding: 2em;
   border-radius: 1rem;
   box-shadow: ${themeVars.boxShadow};
+`;
+
+const Div2 = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
 `;

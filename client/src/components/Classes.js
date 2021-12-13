@@ -75,14 +75,25 @@ const Classes = () => {
               <Image src={course.imageSrc} alt="class pic" />
               {/* <p> Availablity: {course.availability} </p> */}
               <div>
-                {currentUser &&
-                currentUser.classes.includes(course._id.toString()) ? (
-                  <div>You already have this class</div>
+                {currentUser && currentUser.classes?.includes(course._id) ? (
+                  <div
+                    style={{
+                      fontWeight: "bold",
+                      fontSize: "1.1em",
+                      marginTop: "10px",
+                    }}
+                  >
+                    You have already registered for this class!
+                  </div>
                 ) : (
                   <Div>
-                    <Link className="primary-button" to={"/checkout"}>
-                      Reserve now
-                    </Link>
+                    {course.availability ? (
+                      <Link className="primary-button" to={"/checkout"}>
+                        Reserve now
+                      </Link>
+                    ) : (
+                      <div>Class is full !</div>
+                    )}
                   </Div>
                 )}
               </div>
@@ -141,10 +152,9 @@ const CardSection = styled.section`
 `;
 
 const Image = styled.img`
-  display: flex;
-  margin-top: 25px;
-  width: 100px;
-  height: 100px;
+  margin-top: 10px;
+  width: 200px;
+  height: 200px;
 `;
 
 const CardContainer = styled.section`
