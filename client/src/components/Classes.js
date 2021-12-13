@@ -73,18 +73,21 @@ const Classes = () => {
               <p>Class duration: {course.duration} minutes </p>
               <p>Level: {course.level} </p>
               <Image src={course.imageSrc} alt="class pic" />
-              <p> Availablity: {course.availability} </p>
+              {/* <p> Availablity: {course.availability} </p> */}
               <div>
                 {currentUser &&
                 currentUser.classes.includes(course._id.toString()) ? (
                   <div>You already have this class</div>
                 ) : (
-                  <Link className="primary-button" to={"/checkout"}>
-                    Reserve now
-                  </Link>
+                  <Div>
+                    <Link className="primary-button" to={"/checkout"}>
+                      Reserve now
+                    </Link>
+                  </Div>
                 )}
               </div>
-              <div>
+
+              <FormContainer>
                 <Form submitHandler={submitReviewHandler}>
                   <ReactStars
                     count={5}
@@ -98,7 +101,8 @@ const Classes = () => {
                   <textarea onChange={handleFormChange} name="text"></textarea>
                   <button type="submit">Submit</button>
                 </Form>
-              </div>
+              </FormContainer>
+
               {course.reviews.map((review) => {
                 return (
                   <Section>
@@ -121,23 +125,18 @@ const Wrapper = styled.main`
   flex-direction: column;
   width: 100%;
   margin: 0;
-  .buttons {
-    display: flex;
-    justify-content: center;
-    h2 {
-      padding: 1rem;
-      margin: 0;
-    }
+
+  h2 {
+    padding: 1rem;
+    margin: 0;
   }
 `;
 const CardSection = styled.section`
-  background: thistle;
   padding: 2rem;
   gap: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: stretch; */
   width: 100%;
 `;
 
@@ -149,13 +148,23 @@ const Image = styled.img`
 `;
 
 const CardContainer = styled.section`
+  margin-top: 1rem;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
+  flex-direction: column;
   justify-content: center;
+  gap: 1rem;
 `;
 
 const Section = styled.section`
   border-top: 1px solid lightgray;
+  display: flex;
+  justify-content: flex-start;
 `;
+
+const Div = styled.div`
+  padding-block: 1rem;
+  display: flex;
+  justify-content: center;
+`;
+
+const FormContainer = styled.div``;

@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./AppProvider";
 import styled from "styled-components";
+import { themeVars } from "./GlobalStyles";
 
 const MyClasses = () => {
   const { classes, course, setCourse } = useContext(AppContext);
@@ -39,11 +40,11 @@ const MyClasses = () => {
           {myClasses &&
             myClasses.map((myClass) => {
               return (
-                <div>
+                <Div>
                   {" "}
                   {myClass.className}{" "}
                   <Image src={myClass.imageSrc} alt="class image" />{" "}
-                </div>
+                </Div>
               );
             })}
         </CardContainer>
@@ -61,7 +62,6 @@ const Wrapper = styled.main`
 `;
 
 const CardSection = styled.section`
-  background: thistle;
   padding: 2rem;
   gap: 2rem;
   display: flex;
@@ -89,4 +89,12 @@ const Image = styled.img`
   margin-top: 25px;
   width: 200px;
   height: 200px;
+`;
+
+const Div = styled.div`
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 2em;
+  border-radius: 1rem;
+  box-shadow: ${themeVars.boxShadow};
 `;

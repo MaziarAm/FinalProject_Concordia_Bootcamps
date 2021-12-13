@@ -55,16 +55,21 @@ const CheckOut = () => {
   return (
     <Div>
       <>
-        <Div className="class-info">
-          <h3>Summary:</h3>
-          {/* <p>{className}</p> */}
-          {/* <p className="price">total: ${price}</p> */}
-        </Div>
         <Form submitHandler={submitHandler}>
-          <h3>Personal Info</h3>
           <p>Please fill out this form</p>
-          <h3>Credit Card Info</h3>
-          <p>Please fill out your credit card information</p>
+          <Input
+            name="firstname"
+            type="text"
+            required={true}
+            onChange={(ev) => handleFormChange}
+          />
+          <Input
+            name="lastname"
+            type="text"
+            required={true}
+            onChange={(ev) => handleFormChange}
+          />
+
           <Input
             name="creditCard"
             placeholder="Credit Card"
@@ -95,16 +100,4 @@ export default CheckOut;
 const Div = styled.div`
   padding: 2rem;
   border-radius: 1rem;
-
-  .total-price {
-    margin-top: 0.5rem;
-    display: flex;
-    justify-content: space-between;
-    color: gray;
-  }
-
-  .class-info {
-    margin: 0 auto;
-    max-width: 50ch;
-  }
 `;

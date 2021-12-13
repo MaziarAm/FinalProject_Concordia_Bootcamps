@@ -14,12 +14,10 @@ const Header = () => {
       <StyledHeader>
         <Nav>
           <Link to="/">
-            <h1 className="site-title">
-              <span>Site name</span>
-            </h1>
+            <h3>Fluency</h3>
           </Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+          {/* <Link to="/about">About</Link>
+          <Link to="/contact">Contact</Link> */}
         </Nav>
 
         <AuthenticationButton />
