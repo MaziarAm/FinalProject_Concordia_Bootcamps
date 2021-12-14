@@ -46,7 +46,7 @@ const EditClass = ({ course, update, setUpdate, setEditMode }) => {
         <Form submitHandler={submitHandler}>
           <h2>Edit Class Info</h2>
           <Input
-            name="classname"
+            name="className"
             type="text"
             placeholder="Class Title"
             handleFormDataChange={handleFormDataChange}

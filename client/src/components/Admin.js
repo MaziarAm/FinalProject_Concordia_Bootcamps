@@ -5,6 +5,7 @@ import { themeVars } from "./GlobalStyles";
 import ClassCard from "./ClassCard";
 import { AppContext } from "./AppProvider";
 import EditClass from "./EditClass";
+import Loading from "./Loading";
 
 const Admin = () => {
   const { classes, setClasses } = useContext(AppContext);
@@ -21,6 +22,9 @@ const Admin = () => {
       });
   }, [update]);
 
+  if (!classes) {
+    return <Loading />;
+  }
   return (
     <Wrapper>
       <h2>Admin Page</h2>

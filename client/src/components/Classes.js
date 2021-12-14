@@ -67,23 +67,26 @@ const Classes = () => {
         <CardContainer>
           {course && (
             <div key={course._id}>
-              <p style={{ color: "black" }}>{course.className}</p>
-              <p> price: ${course.price} </p>
-              <p> Language: {course.category} </p>
-              <p>Class duration: {course.duration} minutes </p>
-              <p>Level: {course.level} </p>
-              <Image src={course.imageSrc} alt="class pic" />
-              {/* <p> Availablity: {course.availability} </p> */}
+              <Div2>
+                <h3>{course.className}</h3>
+                <p> price: ${course.price} </p>
+                <p> Language: {course.category} </p>
+                <p>Class duration: {course.duration} minutes </p>
+                <p>Level: {course.level} </p>
+                <Image src={course.imageSrc} alt="class pic" />
+                {/* <p> Availablity: {course.availability} </p> */}
+              </Div2>
               <div>
                 {currentUser && currentUser.classes?.includes(course._id) ? (
                   <div
                     style={{
+                      fontStyle: "italic",
                       fontWeight: "bold",
                       fontSize: "1.1em",
                       marginTop: "10px",
                     }}
                   >
-                    You have already registered for this class!
+                    <Div2>You have already registered for this class!</Div2>
                   </div>
                 ) : (
                   <Div>
@@ -92,7 +95,7 @@ const Classes = () => {
                         Reserve now
                       </Link>
                     ) : (
-                      <div>Class is full !</div>
+                      <h3>Class is full !</h3>
                     )}
                   </Div>
                 )}
@@ -168,7 +171,7 @@ const CardContainer = styled.section`
 const Section = styled.section`
   border-top: 1px solid lightgray;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
 `;
 
 const Div = styled.div`
@@ -178,3 +181,10 @@ const Div = styled.div`
 `;
 
 const FormContainer = styled.div``;
+
+const Div2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+`;

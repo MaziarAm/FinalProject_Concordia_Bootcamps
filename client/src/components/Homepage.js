@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import { AppContext } from "./AppProvider";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { themeVars } from "./GlobalStyles";
 
 const HomePage = () => {
   const { classes, filterClasses } = useContext(AppContext);
+  const [classType, setClassType] = useState("both");
   return (
     <Wrapper>
       <h2>Our Classes</h2>
@@ -42,7 +43,7 @@ const HomePage = () => {
               classes.map((course) => {
                 return (
                   <Div key={course._id}>
-                    <Link style={{}} to={`/classes/${course._id}`}>
+                    <Link to={`/classes/${course._id}`}>
                       <H3>{course.className}</H3>
 
                       <p style={{ color: "black" }}> price: ${course.price} </p>

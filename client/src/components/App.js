@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import GlobalStyles from "./GlobalStyles";
 import HomePage from "./Homepage";
@@ -18,7 +18,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const App = () => {
   const { user, isAuthenticated } = useAuth0();
-  console.log(isAuthenticated, "test");
+
+  // console.log(isAuthenticated, "test");
   return (
     <BrowserRouter>
       <GlobalStyles />

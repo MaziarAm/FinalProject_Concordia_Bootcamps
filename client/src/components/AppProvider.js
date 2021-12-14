@@ -10,6 +10,7 @@ const AppProvider = ({ children }) => {
   const { user, isAuthenticated } = useAuth0();
   const [update, setUpdate] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [selectedFilter, setSelectedFilter] = useState(null);
 
   // console.log(user);
   useEffect(() => {

@@ -3,15 +3,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./AppProvider";
 import styled from "styled-components";
 import { themeVars } from "./GlobalStyles";
+import Loading from "./Loading";
+import { Link } from "react-router-dom";
 
 const MyClasses = () => {
   const { classes, course, setCourse } = useContext(AppContext);
+
   const [myClasses, setMyClasses] = useState("");
   const { user, isAuthenticated, isLoading } = useAuth0();
   const [message, setMessage] = useState(null);
   const [formData, setFormData] = useState(null);
   const [stars, setStars] = useState(0);
-  console.log(user);
+  // console.log(course);
 
   useEffect(() => {
     isAuthenticated &&
@@ -27,10 +30,9 @@ const MyClasses = () => {
         });
   }, [isAuthenticated]);
 
-  if (isLoading) {
-    return <div>Loading ...</div>;
+  if (!user || !myClasses) {
+    return <Loading />;
   }
-
   return (
     <Wrapper>
       <CardSection>
@@ -39,11 +41,17 @@ const MyClasses = () => {
         <CardContainer>
           {myClasses &&
             myClasses.map((myClass) => {
+              // console.log(myClasses);
+              console.log(myClass);
               return (
                 <Div>
-                  {" "}
-                  {myClass.className}{" "}
-                  <Image src={myClass.imageSrc} alt="class image" />{" "}
+                  <Link
+                    style={{ color: "black" }}
+                    to={`/classes/${myClass.course_id}`}
+                  >
+                    {myClass.className}
+                  </Link>
+                  <Image src={myClass.imageSrc} alt="class image" />
                 </Div>
               );
             })}

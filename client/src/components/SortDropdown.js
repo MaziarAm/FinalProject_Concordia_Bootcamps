@@ -5,7 +5,58 @@ import { AppContext } from "./AppProvider";
 
 export const SortDropdown = () => {
   const { classes, setClasses } = useContext(AppContext);
-  console.log(setClasses);
+
+  const handleChangeFilter2 = (ev) => {
+    // console.log(classes);
+    if (classes) {
+      const classCopy = [...classes];
+      if (ev.target.value === "AtoZ") {
+        const sortedArray = classCopy.sort((course1, course2) => {
+          // console.log(course1, course2);
+          var nameA = course1.className.toUpperCase(); // ignore upper and lowercase
+          var nameB = course2.className.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+
+          // names must be equal
+          return 0;
+        });
+        setClasses(sortedArray);
+      } else if (ev.target.value === "ZtoA") {
+        const sortedArray = classCopy.sort((course1, course2) => {
+          console.log(course1, course2);
+          var nameA = course1.className.toUpperCase(); // ignore upper and lowercase
+          var nameB = course2.className.toUpperCase(); // ignore upper and lowercase
+          if (nameA < nameB) {
+            return 1;
+          }
+          if (nameA > nameB) {
+            return -1;
+          }
+
+          // names must be equal
+          return 0;
+        });
+        setClasses(sortedArray);
+      } else if (ev.target.value === "priceHighToLow") {
+        // console.log(classes);
+        const sortedArray = classCopy.sort((course1, course2) => {
+          return course2.price - course1.price;
+        });
+        console.log(sortedArray);
+        setClasses(sortedArray);
+      } else if (ev.target.value === "priceLowToHigh") {
+        const sortedArray = classCopy.sort((course1, course2) => {
+          return course1.price - course2.price;
+        });
+        setClasses(sortedArray);
+      }
+    }
+  };
 
   const handleChangeFilter = (ev) => {
     fetch("/classes")
@@ -62,7 +113,7 @@ export const SortDropdown = () => {
   };
   return (
     <Div>
-      <Select className="sort-dropdown" onChange={handleChangeFilter}>
+      <Select className="sort-dropdown" onChange={handleChangeFilter2}>
         <option value="" disabled selected>
           Sort By
         </option>
