@@ -7,7 +7,8 @@ import Loading from "./Loading";
 import { themeVars } from "./GlobalStyles";
 
 const HomePage = () => {
-  const { classes, filterClasses } = useContext(AppContext);
+  const { classes, filterClasses, selectedFilter, setSelectedFilter } =
+    useContext(AppContext);
   const [classType, setClassType] = useState("both");
   return (
     <Wrapper>
@@ -15,22 +16,55 @@ const HomePage = () => {
       <Section>
         <Div2>
           <button
+            style={
+              selectedFilter === "french"
+                ? { background: "#cbbfdb" }
+                : { background: "white" }
+            }
             onClick={() => {
-              filterClasses("category", "french");
+              if (selectedFilter !== "french") {
+                filterClasses("category", "french");
+                setSelectedFilter("french");
+              } else if (selectedFilter === "french") {
+                filterClasses("category", "none");
+                setSelectedFilter(null);
+              }
             }}
           >
             French
           </button>
           <button
+            style={
+              selectedFilter === "english"
+                ? { background: "#cbbfdb" }
+                : { background: "white" }
+            }
             onClick={() => {
-              filterClasses("category", "english");
+              if (selectedFilter !== "english") {
+                filterClasses("category", "english");
+                setSelectedFilter("english");
+              } else if (selectedFilter === "english") {
+                filterClasses("category", "none");
+                setSelectedFilter(null);
+              }
             }}
           >
             English
           </button>
           <button
+            style={
+              selectedFilter === "both"
+                ? { background: "#cbbfdb" }
+                : { background: "white" }
+            }
             onClick={() => {
-              filterClasses("category", "both");
+              if (selectedFilter !== "both") {
+                filterClasses("category", "both");
+                setSelectedFilter("both");
+              } else if (selectedFilter === "both") {
+                filterClasses("category", "none");
+                setSelectedFilter(null);
+              }
             }}
           >
             English and French

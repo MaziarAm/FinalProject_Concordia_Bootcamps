@@ -70,6 +70,10 @@ const AppProvider = ({ children }) => {
       .then((data) => {
         // console.log(data);
         // setClasses(data.data);
+        if (value === "none") {
+          setClasses(data.data);
+          return;
+        }
         let filteredClasses = data.data.filter((course) => {
           return course[key] === value;
         });
@@ -90,6 +94,8 @@ const AppProvider = ({ children }) => {
         setUpdate,
         currentUser,
         setCurrentUser,
+        selectedFilter,
+        setSelectedFilter,
       }}
     >
       {children}

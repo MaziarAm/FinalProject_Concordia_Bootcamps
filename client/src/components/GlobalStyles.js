@@ -159,9 +159,9 @@ button, .button, .primary-button, .cta-button , .big-button {
   &:active{
     background: #cbbfdb;
   }
-  &:focus{
+  /* &:focus{
     background: #cbbfdb;
-  }
+  } */
 }
 
 .primary-button, .cta-button , .big-button {
