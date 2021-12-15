@@ -25,7 +25,7 @@ const EditClass = ({ course, update, setUpdate, setEditMode }) => {
       .then((res) => res.json())
       .then((json) => {
         if (json.status === 200) {
-          console.log(json);
+          // console.log(json);
           setUpdate(!update);
           setEditMode(false);
         }

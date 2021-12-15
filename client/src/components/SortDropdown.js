@@ -47,7 +47,7 @@ export const SortDropdown = () => {
         const sortedArray = classCopy.sort((course1, course2) => {
           return course2.price - course1.price;
         });
-        console.log(sortedArray);
+        // console.log(sortedArray);
         setClasses(sortedArray);
       } else if (ev.target.value === "priceLowToHigh") {
         const sortedArray = classCopy.sort((course1, course2) => {
@@ -65,10 +65,10 @@ export const SortDropdown = () => {
       })
       .then((data) => {
         // console.log(data);
-        console.log(setClasses);
+        // console.log(setClasses);
         if (ev.target.value === "AtoZ") {
           const sortedArray = data.data.sort((course1, course2) => {
-            console.log(course1, course2);
+            // console.log(course1, course2);
             var nameA = course1.className.toUpperCase(); // ignore upper and lowercase
             var nameB = course2.className.toUpperCase(); // ignore upper and lowercase
             if (nameA < nameB) {
@@ -84,7 +84,7 @@ export const SortDropdown = () => {
           setClasses(sortedArray);
         } else if (ev.target.value === "ZtoA") {
           const sortedArray = data.data.sort((course1, course2) => {
-            console.log(course1, course2);
+            // console.log(course1, course2);
             var nameA = course1.className.toUpperCase(); // ignore upper and lowercase
             var nameB = course2.className.toUpperCase(); // ignore upper and lowercase
             if (nameA < nameB) {

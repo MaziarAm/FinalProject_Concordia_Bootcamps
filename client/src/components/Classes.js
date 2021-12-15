@@ -17,12 +17,12 @@ const Classes = () => {
   const [update, setUpdate] = useState(false);
   const [stars, setStars] = useState(0);
   const { user, isAuthenticated } = useAuth0();
-  console.log(user);
+  //console.log(user);
 
   const { _id } = useParams();
 
   const ratingChanged = (newRating) => {
-    console.log(newRating);
+    // console.log(newRating);
     setStars(newRating);
   };
   const handleFormChange = (ev) => {
