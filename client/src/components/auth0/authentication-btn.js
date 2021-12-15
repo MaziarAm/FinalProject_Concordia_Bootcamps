@@ -48,9 +48,13 @@ const AuthenticationButton = () => {
         {isProfileMenuVisible && (
           <div className="profile-menu">
             {userType === "user" ? (
-              <Link to="/my-classes">My Classes</Link>
+              <Link style={{ margin: "0.25rem" }} to="/my-classes">
+                My Classes
+              </Link>
             ) : (
-              <Link to="/dashboard">Dashboard</Link>
+              <Link style={{ margin: "0.25rem" }} to="/dashboard">
+                Dashboard
+              </Link>
             )}
             <LogoutButton />
           </div>

@@ -7,6 +7,7 @@ import Form from "./Form";
 import ReactStars from "react-rating-stars-component";
 import { useAuth0 } from "@auth0/auth0-react";
 import Loading from "./Loading";
+import { themeVars } from "./GlobalStyles";
 
 const Classes = () => {
   const { classes, course, setCourse, currentUser, setCurrentUser } =
@@ -68,7 +69,7 @@ const Classes = () => {
           {course && (
             <div key={course._id}>
               <Div2>
-                <h3>{course.className}</h3>
+                <h3 style={{ margin: "0.25rem" }}>{course.className}</h3>
                 <p> price: ${course.price} </p>
                 <p> Language: {course.category} </p>
                 <p>Class duration: {course.duration} minutes </p>
@@ -79,14 +80,16 @@ const Classes = () => {
               <div>
                 {currentUser && currentUser.classes?.includes(course._id) ? (
                   <div
-                    style={{
-                      fontStyle: "italic",
-                      fontWeight: "bold",
-                      fontSize: "1.1em",
-                      marginTop: "10px",
-                    }}
+                  // style={{
+                  //   fontStyle: "italic",
+                  //   fontWeight: "bold",
+                  //   fontSize: "1.1em",
+                  //   marginTop: "20px",
+                  // }}
                   >
-                    <Div2>You have already registered for this class!</Div2>
+                    <Div2 style={{ boxShadow: "none" }}>
+                      You have already registered for this class!
+                    </Div2>
                   </div>
                 ) : (
                   <Div>
@@ -187,4 +190,9 @@ const Div2 = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 2em;
+  border-radius: 1rem;
+  box-shadow: ${themeVars.boxShadow};
 `;

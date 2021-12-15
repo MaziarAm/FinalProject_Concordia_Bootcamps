@@ -7,8 +7,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { AppContext } from "./AppProvider";
 
 const CheckOut = () => {
-  const { classes, course, setCourse, update, setUpdate } =
-    useContext(AppContext);
+  const {
+    classes,
+    course,
+    setCourse,
+    update,
+    setUpdate,
+    currentUser,
+    setCurrentUser,
+  } = useContext(AppContext);
   //   console.log(course);
   const { user, isAuthenticated } = useAuth0();
   //   console.log(user);
@@ -47,6 +54,7 @@ const CheckOut = () => {
       .then((data) => {
         if (data.status === 200) {
           setUpdate(!update);
+          setCurrentUser(data.data);
           history.push("/confirmation");
         } else if (data.status === 400) {
           window.alert("Sorry,this class is full!");
@@ -58,7 +66,7 @@ const CheckOut = () => {
     <Div>
       <>
         <Form submitHandler={submitHandler}>
-          <p>Please fill out this form</p>
+          <h3>Please fill out this form</h3>
           <Input
             name="firstname"
             type="text"

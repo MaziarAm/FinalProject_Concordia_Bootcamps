@@ -60,7 +60,7 @@ const createOrder = async (req, res) => {
       const updateInventory = await db
         .collection("classes")
         .updateOne({ _id: req.body.course_id }, { $inc: { availability: -1 } });
-      // console.log(updateInventory);
+      console.log(updateInventory);
       if (updateInventory.modifiedCount === 1) {
         await db.collection("classReservations").insertOne(req.body);
 
@@ -70,9 +70,17 @@ const createOrder = async (req, res) => {
             { email: req.body.email },
             { $push: { classes: req.body.course_id } }
           );
+        const currentUser = await db
+          .collection("users")
+          .findOne({ email: req.body.email });
+        console.log(currentUser);
         return res
           .status(200)
-          .json({ status: 200, message: "Registration successful" });
+          .json({
+            status: 200,
+            message: "Registration successful",
+            data: currentUser,
+          });
       }
     }
 
