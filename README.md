@@ -1,6 +1,6 @@
 Final project for Concordia Bootcamps is an online English/French class called "Fluency". 
 Authentication is done via Auth0 and has 2 types: User and Admin.
-A user can register for a course and check all the registered courses in a seperate page. 
+A user can register for a course and check all the registered courses in a separate page. 
 An admin can edit and delete each course.
 
 <img width="1536" alt="Screen Shot 2021-12-27 at 11 14 21 AM" src="https://user-images.githubusercontent.com/46263821/147489630-56427ff9-9788-4959-b0ee-a1383f94c9a5.png">
